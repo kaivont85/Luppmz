@@ -1,0 +1,225 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lu Perfect Pets — Tarjeta Digital</title>
+<meta name="theme-color" content="#0aa1b8" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+<style>
+  :root{
+    /* Mint gradient (Option B) */
+    --bg1:#e6f6ff; --bg2:#b7ecff; --bg3:#a8ffe6;
+    --ink:#0e1b2a; --muted:#47627c;
+    --card:#ffffffee;
+    --shadow:0 22px 60px rgba(0,0,0,.18);
+    --border:rgba(14,27,42,.14);
+  }
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;min-height:100dvh;color:var(--ink);
+    font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background:linear-gradient(135deg, var(--bg2) 0%, var(--bg1) 40%, var(--bg3) 100%);
+    display:flex;align-items:center;justify-content:center;padding:36px 16px;
+  }
+
+  .card{
+    width:100%;max-width:560px;background:var(--card);backdrop-filter:blur(6px);
+    border:2px solid var(--border);border-radius:24px;
+    /* brand glow */
+    box-shadow:
+      var(--shadow),
+      0 0 52px rgba(37,211,102,.12),
+      0 0 48px rgba(244, 76, 106, .10);
+    padding:26px 22px;text-align:center;position:relative;overflow:hidden;
+
+    /* 🐾 Pink+Blue paws, slightly darker; start exactly at left/top */
+    background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1' viewBox='0 0 64 64'>\
+  <g fill='%23ff79b0' fill-opacity='.065' stroke='%23128C7E' stroke-opacity='.14' stroke-width='1.0'>\
+    <circle cx='18' cy='14' r='7'/>\
+    <circle cx='32' cy='10' r='7'/>\
+    <circle cx='46' cy='14' r='7'/>\
+    <ellipse cx='32' cy='38' rx='14' ry='11'/>\
+  </g>\
+</svg>");
+    background-repeat:repeat;
+    background-size:210px 165px;
+    background-position:-20px top;   /* nudge left to remove any gap */
+    background-origin:border-box;
+  }
+
+  .logo{
+    width:160px;height:120px;display:block;margin:0 auto 12px;object-fit:contain;
+    border-radius:16px;background:linear-gradient(145deg, rgba(255,255,255,.6), rgba(255,255,255,.3));
+  }
+
+  .name{font-size:32px;font-weight:900;letter-spacing:.3px;margin:4px 0 10px;}
+  .owner{font-size:17px;font-weight:800;color:var(--ink);text-align:center;margin:-2px 0 14px;}
+
+  /* CTAs */
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-weight:900;font-size:19px;padding:13px 20px;border-radius:16px;
+    color:#fff;border:2px solid rgba(255,255,255,.85);
+    box-shadow:0 14px 36px rgba(0,0,0,.12);transform:translateZ(0)
+  }
+  .cta i{font-size:19px}
+  .cta:hover{transform:translateY(-2px) scale(1.02)}
+  .cta:focus-visible{outline:3px solid #fff; outline-offset:2px}
+
+  .btn-wa{background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 14px 36px rgba(37,211,102,.35)}
+  .btn-call{background:linear-gradient(135deg,#ff5e6d,#ff8a61);box-shadow:0 14px 36px rgba(255,94,109,.35)}
+
+  .divider{height:1px;background:linear-gradient(90deg, transparent, rgba(14,27,42,.15), transparent);margin:14px 0}
+
+  .blurb{
+    margin:18px auto 14px;max-width:480px;line-height:1.6;font-size:17px;
+    display:grid;gap:8px;font-weight:800
+  }
+
+  .info{display:grid;gap:10px;margin:14px 0 6px;font-size:16px}
+  .row{display:flex;gap:10px;justify-content:center;align-items:center}
+  .row i{color:#25D366}
+  .row a{color:var(--ink);text-underline-offset:3px}
+  .row a:hover{color:#128C7E}
+
+  /* Make phone + email bold */
+  .contact .row a{font-weight:800}
+
+  .socials{display:flex;gap:14px;justify-content:center;margin:14px 0 6px}
+  .soc{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff}
+  .soc.fb{background:#1877F2}.soc.ig{background:#E4405F}
+
+  .save-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .vcf{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;color:var(--ink);background:#fff;border:1px dashed #00b3a4;padding:10px 14px;border-radius:12px;box-shadow:0 10px 20px rgba(0,0,0,.06)}
+  .vcf i{font-size:18px;color:#00b3a4}
+  .vcf.ios{border-style:solid}
+  .vcf.and{border-color:#18a4ff}
+  .vcf:hover{background:#f5ffff;transform:translateY(-1px)}
+
+  .qr-section{margin-top:16px;display:grid;place-items:center}
+  .qr-img{width:168px;height:168px;border-radius:12px;border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 20px rgba(0,0,0,.12);background:#fff;padding:8px;image-rendering:crisp-edges}
+  .qr-caption{font:700 14px/1.6 Nunito, system-ui, sans-serif;color:var(--ink);margin-top:8px}
+
+  .mobile-share{display:none;gap:10px;justify-content:center;margin-top:12px}
+  .share-btn{display:inline-flex;align-items:center;gap:8px;border:none;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer;color:#fff;background:linear-gradient(135deg,#25D366,#128C7E);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+  .share-btn.ghost{background:#ffffff;color:var(--ink);border:1px dashed #00b3a4}
+
+  /* Sticky mobile call-only bar */
+  .sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;display:none;gap:10px;z-index:50;background:#ffffffee;border:1px solid var(--border);border-radius:16px;box-shadow:0 14px 36px rgba(0,0,0,.18);padding:8px 10px;padding-bottom:calc(8px + env(safe-area-inset-bottom))}
+  .sticky-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:900;border-radius:12px;padding:10px 12px;color:#fff}
+  .sticky-btn.call{background:linear-gradient(135deg,#ff5e6d,#ff8a61)}
+
+  @media (max-width:640px){
+    .qr-section{display:none}
+    .mobile-share{display:flex}
+    .sticky-cta{display:flex}
+    .name{font-size:28px}
+    .cta{font-size:17px}
+  }
+</style>
+</head>
+<body>
+  <main class="card" role="main">
+    <img src="images/logo for Luisa.jpg" alt="Logo de Lu Perfect Pets" class="logo" />
+
+    <h1 class="name">Lu Perfect Pets</h1>
+    <p class="owner">Luisa Fernanda Alzate Hernández ✂️🐶 · Propietaria</p>
+
+    <!-- Primary CTA: WhatsApp (green) -->
+    <p>
+      <a class="cta btn-wa" href="https://api.whatsapp.com/send?phone=573222930486&text=Hola,%20quiero%20agendar%20una%20cita%20para%20mi%20mascota.%20%F0%9F%90%BE" target="_blank" rel="noopener" aria-label="Programe una cita ahora por WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        <span>Programe una cita ahora</span>
+      </a>
+    </p>
+
+    <!-- Secondary CTA: Llamar (red) -->
+    <p>
+      <a class="cta btn-call" href="tel:+573222930486"><i class="fa-solid fa-phone"></i><span>Llamar ahora</span></a>
+    </p>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="blurb" aria-label="Descripción del servicio">
+      <div>✂️ <strong>Grooming</strong></div>
+      <div>🛁 Cosmética de alta calidad para tu peludo</div>
+      <div>💖 Cada perrito sale feliz y oliendo rico</div>
+      <div>🛵 Domicilio</div>
+      <div>📍 Manizales</div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="info contact" aria-label="Información de contacto">
+      <div class="row">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+573222930486">+57 322 293 0486</a>
+      </div>
+      <div class="row">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:ferchaalzate@outlook.es">ferchaalzate@outlook.es</a>
+      </div>
+    </section>
+
+    <nav class="socials" aria-label="Redes sociales">
+      <a class="soc fb" href="https://www.facebook.com/profile.php?id=61582189275338&rdid=RVIPM7PIvrpVY2dn&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17KxLSP5kk%2F#" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a class="soc ig" href="https://www.instagram.com/luperfectpets?igsh=a295c3M2eWNtb3Ju" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </nav>
+
+    <div class="save-actions" aria-label="Guardar contacto">
+      <a class="vcf ios" href="Lu-Perfect-Pets.vcf" download="Lu-Perfect-Pets.vcf"><i class="fa-brands fa-apple" aria-hidden="true"></i><span>Guardar en iPhone</span></a>
+      <a class="vcf and" href="Lu-Perfect-Pets.vcf" download="Lu-Perfect-Pets.vcf"><i class="fa-brands fa-android" aria-hidden="true"></i><span>Guardar en Android</span></a>
+    </div>
+
+    <!-- Desktop QR (hidden on mobile) -->
+    <section class="qr-section" aria-label="Código QR del sitio">
+      <img src="images/qr-lupperfectpets-site.png" alt="Escanea para abrir la tarjeta digital de Lu Perfect Pets" class="qr-img">
+      <div class="qr-caption">Escanea para abrir la tarjeta digital</div>
+    </section>
+
+    <!-- Mobile share actions -->
+    <div class="mobile-share" aria-label="Compartir o copiar enlace">
+      <button class="share-btn" id="btnShare"><i class="fa-solid fa-share-nodes"></i><span>Compartir</span></button>
+      <button class="share-btn ghost" id="btnCopy"><i class="fa-regular fa-copy"></i><span>Copiar enlace</span></button>
+    </div>
+
+    <!-- Sticky mobile CTA bar (call only) -->
+    <div class="sticky-cta" aria-hidden="false">
+      <a class="sticky-btn call" href="tel:+573222930486"><i class="fa-solid fa-phone"></i><span>Llamar</span></a>
+    </div>
+  </main>
+
+<script>
+  // Mobile share / copy
+  (function(){
+    const shareBtn = document.getElementById('btnShare');
+    const copyBtn = document.getElementById('btnCopy');
+    const shareData = { title: 'Lu Perfect Pets', text: 'Tarjeta digital — Lu Perfect Pets', url: window.location.href };
+    if(shareBtn){
+      shareBtn.addEventListener('click', async () => {
+        if(navigator.share){ try{ await navigator.share(shareData);}catch(e){} }
+        else{ try{ await navigator.clipboard.writeText(window.location.href); if(copyBtn){copyBtn.querySelector('span').textContent='Enlace copiado';} }catch(e){} }
+      });
+    }
+    if(copyBtn){
+      copyBtn.addEventListener('click', async () => { try{ await navigator.clipboard.writeText(window.location.href); copyBtn.querySelector('span').textContent='Enlace copiado'; }catch(e){} });
+    }
+  })();
+</script>
+</body>
+</html>
+
+
+
